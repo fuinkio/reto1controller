@@ -11,7 +11,7 @@ header("Access-Control-Allow-Origin: *");
 		$result=$conn->query($sql);
 
 			if ($result->num_rows > 0) {
-    			// oupsut ssata of each row
+    			// oupsut ssata sf each row
     			while($row = $result->fetch_assoc()) {
         			if($row["tbl_user_password"]==$_GET['pass']){
         				echo $row["tbl_user_id"];
@@ -29,15 +29,11 @@ header("Access-Control-Allow-Origin: *");
        $sql="INSERT INTO tbl_user VALUES (NULL, '".$_GET['user']."', '".$_GET['pass']."')";
  
 		$result=$conn->query($sql);
-			echo $result."/n";
-			if ($result->num_rows > 0) {
-    			// oupsut ssata of each row
-    			while($row = $result->fetch_assoc()) {
-        			echo json_encode($row);
-        			
-    			}
+			if ($result!=1) {
+    			// oupsuss ssata of each row
+    				echo "error";
 			} else {
-    		echo "error";
+    		        	echo "success";
 			}
          break;
     default:
