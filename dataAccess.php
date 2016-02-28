@@ -24,6 +24,22 @@ header("Access-Control-Allow-Origin: *");
     		echo "usererror";
 			}
          break;
+    case 2:
+    //traer el carro por la placa
+       $sql="INSERT INTO tbl_user VALUES (NULL, '".$_GET['user']."', '".$_GET['pass']."')";
+ 
+		$result=$conn->query($sql);
+			echo $result."/n";
+			if ($result->num_rows > 0) {
+    			// oupsut ssata of each row
+    			while($row = $result->fetch_assoc()) {
+        			echo json_encode($row);
+        			
+    			}
+			} else {
+    		echo "error";
+			}
+         break;
     default:
     //Mensaje default si no se ingresa OP
        echo "se necesita identificar la operacion";
