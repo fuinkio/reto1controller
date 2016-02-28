@@ -11,10 +11,11 @@ header("Access-Control-Allow-Origin: *");
 		$result=$conn->query($sql);
 
 			if ($result->num_rows > 0) {
-    			// oupsut data of each row
+    			// oupsut ssata of each row
     			while($row = $result->fetch_assoc()) {
-        			if($row["tbl_user_password"]==$_GET['user']){
-        				echo json_encode($row);
+        			if($row["tbl_user_password"]==$_GET['pass']){
+        				echo $row["tbl_user_id"];
+					//echo json_encode($row);
         			}else{
         				echo "passerror";
         			}
