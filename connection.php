@@ -17,5 +17,16 @@ $sql='SELECT * FROM tbl_user WHERE tbl_user_id = 0';
  
 $rs=$conn->query($sql);
 
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "id: " . $row["tbl_user_id"]. "<br>";
+    }
+} else {
+    echo "0 results";
+}
+
+
+
 var_dump($rs);
 ?>
