@@ -85,6 +85,18 @@ header("Access-Control-Allow-Origin: *");
                         echo "success";
             }
          break;
+    case 7:
+    //buscar tableros sin segundo jugador y que no sean mios
+       $sql="SELECT * FROM tbl_board WHERE tbl_board_player2 is NULL AND tbl_board_player1 != ".$_GET['player'];
+ 
+        $result=$conn->query($sql);
+            if ($result!=1) {
+                // oupsuss ssata of each row
+                    echo json_encode($result);
+            } else {
+                        echo "success";
+            }
+         break;
     default:
     //Mensaje default si no se ingresa OP
        echo "se necesita identificar la operacion";
