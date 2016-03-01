@@ -48,11 +48,7 @@ header("Access-Control-Allow-Origin: *");
     		        	echo "success";
 			}
          break;
-    default:
-    //Mensaje default si no se ingresa OP
-       echo "se necesita identificar la operacion";
-        break;
-    }
+ 
      case 4:
     //asignar jugador dos
        $sql="UPDATE tbl_board SET tbl_board_player2 = '".$_GET['player']."' WHERE tbl_board.tbl_board_id = ".$_GET['tablero'];
