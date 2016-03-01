@@ -53,6 +53,47 @@ header("Access-Control-Allow-Origin: *");
        echo "se necesita identificar la operacion";
         break;
     }
+     case 4:
+    //asignar jugador dos
+       $sql="UPDATE tbl_board SET tbl_board_player2 = '".$_GET['player']."' WHERE tbl_board.tbl_board_id = ".$_GET['tablero'];
+ 
+        $result=$conn->query($sql);
+            if ($result!=1) {
+                // oupsuss ssata of each row
+                    echo "error";
+            } else {
+                        echo "success";
+            }
+         break;
+     case 5:
+    //asignar jugada
+       $sql="UPDATE tbl_board SET tbl_board_last = '".$_GET['player']."', tbl_board_pos_".$_GET['position']." = '".$_GET['player']."' WHERE tbl_board.tbl_board_id = ".$_GET['tablero'];
+ 
+        $result=$conn->query($sql);
+            if ($result!=1) {
+                // oupsuss ssata of each row
+                    echo "error";
+            } else {
+                        echo "success";
+            }
+         break;
+    case 6:
+    //asignar ganador
+       $sql="UPDATE tbl_board SET tbl_board_winner = '".$_GET['player']."' WHERE tbl_board.tbl_board_id = ".$_GET['tablero'];
+ 
+        $result=$conn->query($sql);
+            if ($result!=1) {
+                // oupsuss ssata of each row
+                    echo "error";
+            } else {
+                        echo "success";
+            }
+         break;
+    default:
+    //Mensaje default si no se ingresa OP
+       echo "se necesita identificar la operacion";
+        break;
+    }
 
 
 ?>
