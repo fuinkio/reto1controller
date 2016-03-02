@@ -92,9 +92,13 @@ header("Access-Control-Allow-Origin: *");
         $result=$conn->query($sql);
             if ($result!=1) {
                 // oupsuss ssata of each row
-                    echo json_encode($result);
+                    echo "error";
             } else {
-                        echo "success";
+			$rows= array();
+			while( $row = $result->fetch_assoc()) {
+				$rows[] = $row;
+			}
+                        echo json_encode($rows);
             }
          break;
     default:
@@ -102,6 +106,5 @@ header("Access-Control-Allow-Origin: *");
        echo "se necesita identificar la operacion";
         break;
     }
-
-
 ?>
+
