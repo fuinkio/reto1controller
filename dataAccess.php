@@ -51,14 +51,16 @@ header("Access-Control-Allow-Origin: *");
  
      case 4:
     //asignar jugador dos
-       $sql="UPDATE tbl_board SET tbl_board_player2 = '".$_GET['player']."' WHERE tbl_board.tbl_board_id = ".$_GET['tablero'];
+       $sql="UPDATE tbl_board SET tbl_board_player2 = '".$_GET['player']."' WHERE tbl_board.tbl_board_id = ".$_GET['board'];
  
         $result=$conn->query($sql);
             if ($result!=1) {
                 // oupsuss ssata of each row
                     echo "error";
             } else {
-                        echo "success";
+                        $response = file_get_contents("http://10.131.137.200/reto1controller/dataAccess.php?op=8&board=".$_GET['board']);
+                        $json= json_decode($response);
+                        echo $json;
             }
          break;
      case 5:
@@ -70,12 +72,14 @@ header("Access-Control-Allow-Origin: *");
                 // oupsuss ssata of each row
                     echo "error";
             } else {
-                        echo "success";
+                        $response = file_get_contents("http://10.131.137.200/reto1controller/dataAccess.php?op=8&board=".$_GET['board']);
+                        $json= json_decode($response);
+                        echo $json;
             }
          break;
     case 6:
     //asignar ganador
-       $sql="UPDATE tbl_board SET tbl_board_winner = '".$_GET['player']."' WHERE tbl_board.tbl_board_id = ".$_GET['tablero'];
+       $sql="UPDATE tbl_board SET tbl_board_winner = '".$_GET['player']."' WHERE tbl_board.tbl_board_id = ".$_GET['board'];
  
         $result=$conn->query($sql);
             if ($result!=1) {
@@ -99,6 +103,18 @@ header("Access-Control-Allow-Origin: *");
 				$rows[] = $row;
 			}
                         echo json_encode($rows);
+            }
+         break;
+    case 8:
+    //buscar tablero
+       $sql="SELECT * FROM tbl_board WHERE tbl_board_id = ".$_GET['board'] ;
+ 
+        $result=$conn->query($sql);
+            if ($result!=1) {
+                // oupsuss ssata of each row
+                    echo "error";
+            } else {
+                    echo json_encode($result->fetch_assoc());
             }
          break;
     default:
