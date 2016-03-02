@@ -65,7 +65,7 @@ header("Access-Control-Allow-Origin: *");
          break;
      case 5:
     //asignar jugada
-       $sql="UPDATE tbl_board SET tbl_board_last = '".$_GET['player']."', tbl_board_pos_".$_GET['position']." = '".$_GET['player']."' WHERE tbl_board.tbl_board_id = ".$_GET['tablero'];
+       $sql="UPDATE tbl_board SET tbl_board_last = '".$_GET['player']."', tbl_board_pos_".$_GET['position']." = '".$_GET['player']."' WHERE tbl_board.tbl_board_id = ".$_GET['board'];
  
         $result=$conn->query($sql);
             if ($result!=1) {
