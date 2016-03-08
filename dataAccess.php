@@ -14,7 +14,7 @@ header("Access-Control-Allow-Origin: *");
     			// oupsut ssata sf each row
     			while($row = $result->fetch_assoc()) {
         			if($row["tbl_user_password"]==$_GET['pass']){
-        				echo $row["tbl_user_id"];
+        				echo json_decode($row["tbl_user_id"]);
 					//echo json_encode($row);
         			}else{
         				echo "passerror";
