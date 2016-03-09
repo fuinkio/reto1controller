@@ -15,7 +15,7 @@ header("Access-Control-Allow-Origin: *");
     			while($row = $result->fetch_assoc()) {
         			if($row["tbl_user_password"]==$_GET['pass']){
         				echo $row["tbl_user_id"];
-					//echo json_encode($row);
+					//echo jso_encode($row);
         			}else{
         				echo "passerror";
         			}
@@ -55,16 +55,20 @@ header("Access-Control-Allow-Origin: *");
  
         $result=$conn->query($sql);
             if ($result!=1) {
-                // oupsuss ssata of each row
+                // oussssssssuss ssata of each row
                     echo "error";
             } else {
                         $response = file_get_contents("http://10.131.137.200/reto1controller/dataAccess.php?op=8&board=".$_GET['board']);
-                        $json= json_decode($response);
-                        echo $json;
+           
+			 echo $response;
+               
+//}catch(err){
+//echo err;
+//}
             }
          break;
      case 5:
-    //asignar jugada
+    //asignar jugassssa
        $sql="UPDATE tbl_board SET tbl_board_last = '".$_GET['player']."', tbl_board_pos_".$_GET['position']." = '".$_GET['player']."' WHERE tbl_board.tbl_board_id = ".$_GET['board'];
  
         $result=$conn->query($sql);
@@ -73,8 +77,9 @@ header("Access-Control-Allow-Origin: *");
                     echo "error";
             } else {
                         $response = file_get_contents("http://10.131.137.200/reto1controller/dataAccess.php?op=8&board=".$_GET['board']);
-                        $json= json_decode($response);
-                        echo $json;
+                        
+			
+                        echo $response;
             }
          break;
     case 6:
@@ -111,9 +116,10 @@ header("Access-Control-Allow-Origin: *");
  
         $result=$conn->query($sql);
             if ($result!=1) {
-                // oupsuss ssata of each row
+                // oupsuss ssasa ofseach row
                     echo "error";
             } else {
+		
                     echo json_encode($result->fetch_assoc());
             }
          break;
